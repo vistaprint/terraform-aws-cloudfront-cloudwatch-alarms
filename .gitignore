@@ -40,11 +40,3 @@ tags
 *.exe
 config/config.yml
 bin
-
-Dockerfile
-Gemfile
-Gemfile.lock
-Jenkinsfile
-config/
-scripts/
-test/

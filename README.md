@@ -18,7 +18,7 @@ See the `variables.tf` file in the module folder for more information on the mod
 
 ```hcl
 module "sample_monitors" {
-  source     = "daniebker/cloudfront-cloudwatch-alarms/aws"
+  source     = "vistaprint/cloudfront-cloudwatch-alarms/aws"
   domain   = "www.example.com"
   distribution_id = "${aws_cloudfront_distribution.example_distribution.id}"
 
