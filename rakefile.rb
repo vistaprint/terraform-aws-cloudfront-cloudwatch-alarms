@@ -3,7 +3,7 @@ require 'yaml'
 
 require 'TerraformDevKit'
 
-require_relative 'scripts/module_test'
+require_relative 'terraform-module-testing-framework/scripts/module_test'
 
 TDK = TerraformDevKit
 
