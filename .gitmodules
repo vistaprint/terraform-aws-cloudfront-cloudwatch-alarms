@@ -1,3 +1,0 @@
-[submodule "terraform-module-testing-framework"]
-	path = terraform-module-testing-framework
-	url = ssh://git@vbustash.vistaprint.net:7999/~dbaker/terraform-module-testing-framework.git

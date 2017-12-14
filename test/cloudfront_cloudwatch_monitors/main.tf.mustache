@@ -1,5 +1,5 @@
 provider "aws" {
-  profile = "${var.profile}"
+  profile = "{{Profile}}"
   region  = "us-east-1"
 }
 
@@ -70,7 +70,7 @@ resource "aws_cloudfront_distribution" "example_distribution" {
 ###############################################################
 
 module "cloudfront_cloudwatch_alarms" {
-  source = "../../"
+  source = "../../../../"
 
   domain   = "www.example.com"
   distribution_id = "${aws_cloudfront_distribution.example_distribution.id}"
@@ -84,4 +84,16 @@ module "cloudfront_cloudwatch_alarms" {
       threshold = 1 #(%)
     }
   }
+}
+
+###############################################################
+# OUTPUTS
+###############################################################
+
+output "distribution_domain_name" {
+  value = "${aws_cloudfront_distribution.example_distribution.domain_name}"
+}
+
+output "distribution_id" {
+  value = "${aws_cloudfront_distribution.example_distribution.id}"
 }
