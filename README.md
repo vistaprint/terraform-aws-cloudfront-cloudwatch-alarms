@@ -38,3 +38,23 @@ module "sample_monitors" {
 The alarms name is prefixed with the domain name and the distributionid. For example, the `4xxError` alarm will be called `example.com-E12312QH8BVRIY-4xxErrorRate`.
 
 Cloudfront distributions are Global but all metrics and alarms must be set in N. Virginia (us-east-1).
+
+# Testing 
+
+This module uses the terraform-module-testing framework. After making some changes run `rake preflight` from the root of the repository to run all tests for the module. This will require:
+
+* A config file in `test\cloudfront-cloudwatch-monitors\config\config-dev.yml`
+```yml
+terraform-version: 0.11.0
+project-name: cloudfront cloudwatch monitors tests
+aws:
+  profile: <profile>
+  region: <region>
+
+```
+* A secrets file in `test\cloudfront-cloudwatch-monitors\secrets.yml`:
+```yml
+region: <region>
+aws_access_key_id: <access_key_id>
+aws_secret_access_key:  <secret_access_key>
+```
