@@ -1,1 +1,1 @@
-require 'terraform_module_testing/module_tasks'
+require 'tfmodtest/module_tasks'

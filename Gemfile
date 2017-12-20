@@ -1,5 +1,5 @@
 source 'https://rubygems.org' do
-  gem 'awspec'
-  gem 'rspec'
-  gem 'terraform_module_testing'
+  gem 'awspec', '~> 0.88'
+  gem 'rspec', '~> 3'
+  gem 'tfmodtest', '0.0.1.rc1'
 end
