@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+Aws.use_bundled_cert!
+
 describe cloudwatch_alarm("www.example.com-#{ENV['distribution_id']}-5xxErrorRate") do
   it { should exist }
   it { should belong_to_metric('5xxErrorRate').namespace('AWS/CloudFront') }
