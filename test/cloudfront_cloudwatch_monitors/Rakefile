@@ -1,0 +1,30 @@
+namespace 'cloudfront_cloudwatch_monitors' do
+  ROOT_PATH = File.dirname(File.expand_path(__FILE__))
+
+  spec = Gem::Specification.find_by_name 'TerraformDevKit'
+  load "#{spec.gem_dir}/tasks/devkit.rake"
+
+  begin
+    require 'rspec/core/rake_task'
+    RSpec::Core::RakeTask.new(:spec)
+  rescue LoadError
+    raise 'Rspec not found'
+  end
+
+  desc 'Tests the module using rspec'
+  task :custom_test, [:env] => :spec
+
+  desc 'Sets the distribution id of the applied cloudfront distribution'
+  task :post_apply, [:env] do |_, args|
+    env = TDK::Environment.new(args.env)
+    ENV['distribution_id'] = TDK::Command.run(
+      'terraform output distribution_id',
+      directory: env.working_dir
+    )[0]
+  end
+
+  desc 'Deletes the Env var created by post_apply'
+  task :post_destroy, [:env] do
+    ENV.delete('distribution_id')
+  end
+end
