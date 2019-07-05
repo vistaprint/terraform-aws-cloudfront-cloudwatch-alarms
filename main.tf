@@ -59,7 +59,7 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
                           var.default_threshold
                           )}"
   
-  dimensions {
+  dimensions = {
     DistributionId = "${var.distribution_id}"
     Region   = "Global"
   }
