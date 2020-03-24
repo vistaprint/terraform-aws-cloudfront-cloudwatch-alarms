@@ -1,6 +1,6 @@
 source 'https://rubygems.org' do
-  gem 'awspec', '~> 1'
-  gem 'rspec', '~> 3'
-  gem 'tfmodtest', '0.0.1.rc3'
-  gem 'rake', '~> 12.3'
+  gem 'awspec'
+  gem 'rspec'
+  gem 'tfmodtest', '~> 0.1'
+  gem 'rake'
 end
