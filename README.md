@@ -45,7 +45,7 @@ This module uses the terraform-module-testing framework. After making some chang
 
 * A config file in `test\cloudfront-cloudwatch-monitors\config\config-dev.yml`
 ```yml
-terraform-version: 0.11.0
+terraform-version: 0.12.24
 project-name: cloudfront cloudwatch monitors tests
 aws:
   profile: <profile>
@@ -56,5 +56,5 @@ aws:
 ```yml
 region: <region>
 aws_access_key_id: <access_key_id>
-aws_secret_access_key:  <secret_access_key>
+aws_secret_access_key: <secret_access_key>
 ```
