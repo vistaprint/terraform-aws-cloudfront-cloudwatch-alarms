@@ -8,6 +8,11 @@ variable "default_evaluation_periods" {
   default     = 2
 }
 
+variable "default_datapoints_to_alarm" {
+  description = "The default amount of datapoints to alarm."
+  default     = 2
+}
+
 variable "default_period" {
   description = "The default evaluation period."
   default     = 60
@@ -21,6 +26,11 @@ variable "default_comparison_operator" {
 variable "default_statistic" {
   description = "The default statistic."
   default     = "Average"
+}
+
+variable "default_actions_enabled" {
+  description = "Indicates whether or not actions should be executed during any changes to the alarm's state."
+  default     = true
 }
 
 resource "aws_cloudwatch_metric_alarm" "alarm" {
@@ -42,6 +52,12 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
     var.alarms[element(keys(var.alarms), count.index)],
     "evaluation_periods",
     var.default_evaluation_periods
+  )
+
+  datapoints_to_alarm = lookup(
+    var.alarms[element(keys(var.alarms), count.index)],
+    "datapoints_to_alarm",
+    var.default_datapoints_to_alarm
   )
 
   metric_name = element(keys(var.alarms), count.index)
@@ -75,5 +91,11 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
     var.alarms[element(keys(var.alarms), count.index)],
     "actions",
     ""
+  )))
+
+  actions_enabled = compact(split(",", lookup(
+    var.alarms[element(keys(var.alarms), count.index)],
+    "actions_enabled",
+    var.default_actions_enabled
   )))
 }
